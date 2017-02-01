@@ -1,0 +1,22 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\BasicActivity;
+  */  
+   $PerStat = $block->perStats();?>
+   
+        <div class="metrics_element">
+            <span><?php echo __("RDB Last Save Time"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Last save time of DB to disk."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo date('Y-m-d h:i:s', $PerStat['rdb_last_save_time']).__(" GMT"); ?></span>
+            
+         </div>
+   
+        <div class="metrics_element">
+            <span><?php echo __("RDB Changes Since Last Save"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Number of changes to the dataset since last save to RDB."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $PerStat['rdb_changes_since_last_save']; ?></span>
+         </div>

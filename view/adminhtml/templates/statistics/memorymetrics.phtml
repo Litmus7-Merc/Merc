@@ -1,0 +1,81 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\MemoryMetrics;
+  */  
+   $MemStat = $block->memStats();
+   $GenStat = $block->genStats();
+   $CliStat = $block->cliStats();?>
+   
+   
+        <div class="metrics_element">
+            <span><?php echo __("Used Memory"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the memory that Redis has used."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $MemStat['used_memory_human']; ?></span>
+            
+         </div>
+   
+   
+        <?php $used_mem_rss 		= $MemStat['used_memory_rss'];
+               $used_mem_rss_mb   	= round((($used_mem_rss/1024)/1024),2);
+         ?>
+         
+        <div class="metrics_element">
+            <span><?php echo __("Used Memory RSS"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the RSS memory that Redis has used.."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $used_mem_rss_mb."M"; ?></span>
+         </div>
+       
+       <div class="metrics_element">
+            <span><?php echo __("Used Memory Peak"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the peak value of the memory usage since the Redis server starts."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $MemStat['used_memory_peak_human']; ?></span>
+         </div>
+         
+       <?php if($MemStat['mem_fragmentation_ratio'] > 1.5) {
+                $metric_class_color = 'class="metric_element_red"';
+                $alert_message ="Warning! Excessive Fragmentation. Provide more memory for redis or restart the redis instance.";
+             }
+            elseif($MemStat['mem_fragmentation_ratio'] < 1) {
+                $metric_class_color = 'class="metric_element_blue"';
+                $alert_message ="Alert..! Redis need more memory.";
+            }
+            else{
+                $metric_class_color = '';
+                $alert_message = '';
+            }
+       ?>
+       <div class="metrics_element">
+            <span <?php echo $metric_class_color; ?> ><?php echo __("Memory Fragmentation Ratio. "); echo $alert_message; ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Ratio of memory used as seen by the operating system to memory allocated by Redis. Range should be in 1 to 1.5."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $MemStat['mem_fragmentation_ratio']; ?></span>
+            
+       </div>
+    <?php
+        /**General Statics*/
+    ?>
+        <div class="metrics_element">
+            <span><?php echo __("Evicted Keys"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("The Keys removed by the Redis due to hitting #maxmemory limit."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['evicted_keys']; ?></span>
+            
+         </div>
+    <?php
+    /**Client Statics*/
+    ?>
+        <div class="metrics_element">
+            <span><?php echo __("Blocked Clients"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the number of clients that have been suspended by block operations."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $CliStat['blocked_clients']; ?></span>
+         </div>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+ <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../
+../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <block class="Litmus7\Merc\Block\Adminhtml\RedisManager\Edit\Tabs" name="litmus7_merc_redismanager.edit.tabs"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Litmus7\Merc\Block\Adminhtml\RedisManager\Edit" name="litmus7_merc_redismanager.edit"/>
+        </referenceContainer>
+    </body>
+</page>

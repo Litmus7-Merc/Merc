@@ -1,0 +1,34 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\BasicActivity;
+  */  
+   $CliStat = $block->cliStats();
+   $RepStat = $block->repStats();
+   $GenStat = $block->genStats();
+   $SerStat = $block->serStats();?>
+   
+        <div class="metrics_element">
+            <span><?php echo __("Connected Clients"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Number of clients connected to Redis!"); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $CliStat['connected_clients']; ?></span>
+         </div>
+
+         <div class="metrics_element">
+            <span><?php echo __("Connected Slaves"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Number of slaves connected to current master instance!"); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $RepStat['connected_slaves']; ?></span>
+            
+         </div>
+    
+        <div class="metrics_element">
+            <span><?php echo __("Redis Server Uptime"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("The time, Redis server has been working and available!"); ?></div>
+            </span>
+            <?php $uptime = $SerStat['uptime_in_seconds'];?>
+            <span class="metricsvaluespan"><?php echo floor($uptime / 86400)." days ". floor($uptime / 3600) % 24 ." Hrs ".floor($uptime / 60) % 60 ." min"; ?></span>
+         </div>

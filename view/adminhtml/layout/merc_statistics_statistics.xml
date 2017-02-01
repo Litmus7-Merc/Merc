@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <css src="Litmus7_Merc::css/redismanager.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>	
+        <referenceContainer name="content">
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit" name="litmus7_statistics_edit" />
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tabs" name="litmus7_statistics_edit_tabs">
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\PerformanceMetrics" name="litmus7_statistics_edit_tab_performancemetrics" template="statistics/performancemetrics.phtml" />
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\MemoryMetrics" name="litmus7_statistics_edit_tab_memorymetrics" template="statistics/memorymetrics.phtml" />
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\BasicActivity" name="litmus7_statistics_edit_tab_basicactivity" template="statistics/basicactivity.phtml" />
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\PersistenceMetrics" name="litmus7_statistics_edit_tab_persistencemetrics" template="statistics/persistencemetrics.phtml" />
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\ErrorMetrics" name="litmus7_statistics_edit_tab_errormetrics" template="statistics/errormetrics.phtml" />
+            <block class="Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\Configuration" name="litmus7_statistics_edit_tab_configuration" template="statistics/configuration.phtml" />
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">perfomance_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_performancemetrics</argument>
+            </action>
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">memory_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_memorymetrics</argument>
+            </action>
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">activity_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_basicactivity</argument>
+            </action>
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">persistence_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_persistencemetrics</argument>
+            </action>
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">error_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_errormetrics</argument>
+            </action>
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">configuration_section</argument>
+                    <argument name="block" xsi:type="string">litmus7_statistics_edit_tab_configuration</argument>
+            </action>
+			</block>
+        </referenceContainer>
+    </body>
+</page>

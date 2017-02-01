@@ -1,0 +1,30 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\Configuration;
+  */  
+   $config = $block->configuration();?>
+   
+        <div class="metrics_element">
+            <span><?php echo __("Server"); ?></span>
+            <span class="metricsvaluespan"><?php echo $config['server']; ?></span>
+        </div>
+
+        <div class="metrics_element">
+            <span><?php echo __("Port"); ?></span>
+            <span class="metricsvaluespan"><?php echo $config['port']; ?></span>
+        </div>
+
+       <div class="metrics_element">
+            <span><?php echo __("Read Timeout"); ?></span>
+            <span class="metricsvaluespan"><?php echo $config['timeout']; ?></span>
+        </div>     
+        
+        <div class="metrics_element">
+            <span><?php echo __("Compress Threshold"); ?></span>
+            <span class="metricsvaluespan"><?php echo $config['compress_threshold']; ?></span>
+        </div>
+    
+        <div class="metrics_element">
+            <span><?php echo __("Compression Lib"); ?></span>
+            <span class="metricsvaluespan"><?php echo $config['compression_lib']; ?></span>
+        </div>

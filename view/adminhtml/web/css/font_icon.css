@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'MERC';
+  src:  url('../fonts/MERC.eot?r2hn9');
+  src:  url('../fonts/MERC.eot?r2hn9#iefix') format('embedded-opentype'),
+    url('../fonts/MERC.ttf?r2hn9') format('truetype'),
+    url('../fonts/MERC.woff?r2hn9') format('woff'),
+    url('../fonts/MERC.svg?r2hn9#MERC') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body .admin__menu .item-redis > a::before {
+  font-family: 'MERC'  !important;
+  content: "\e900";
+}

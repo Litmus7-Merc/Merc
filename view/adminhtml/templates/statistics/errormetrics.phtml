@@ -1,0 +1,31 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\MemoryMetrics;
+  */  
+   $GenStat = $block->genStats();?>
+   
+   
+        <div class="metrics_element">
+            <span><?php echo __("Rejected Connections"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the number of connections that have exceeded maxclients and been rejected by the Redis server since it started."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['rejected_connections']; ?></span>
+         </div>
+   
+        <div class="metrics_element">
+            <span><?php echo __("KeySpace Misses"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the total number of query requests that have not been hit in the master dictionary since the Redis server started."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['keyspace_misses']; ?></span>
+            
+         </div>
+
+         <div class="metrics_element">
+            <span><?php echo __("Expired Keys"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the total number of keys that have expired since the Redis server started."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['expired_keys']; ?></span>
+         </div>

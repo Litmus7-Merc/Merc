@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Litmus7_Merc::redis" title="Merc" module="Litmus7_Merc" sortOrder="20" resource="Litmus7_Merc::redis"/>
+        
+        <add id="Litmus7_Merc::redis_elememts" title="Elements" module="Litmus7_Merc" sortOrder="10" parent="Litmus7_Merc::redis" resource="Litmus7_Merc::redis_elememts"/>
+        
+        <add id="Litmus7_Merc::redis_config" title="Configuration" module="Litmus7_Merc" sortOrder="10" parent="Litmus7_Merc::redis_elememts" action="merc/redismanager/edit/id/1" resource="Litmus7_Merc::redis_config"/>
+	    
+        <add id="Litmus7_Merc::redis_statistics" title="Statistics" module="Litmus7_Merc" sortOrder="10" parent="Litmus7_Merc::redis_elememts" action="merc/statistics/statistics" resource="Litmus7_Merc::redis_statistics"/>
+	    
+        <add id="Litmus7_Merc::redis_manager" title="Redis Keys" module="Litmus7_Merc" sortOrder="10" parent="Litmus7_Merc::redis_elememts" action="merc/statistics/index/source/redis" resource="Litmus7_Merc::redis_manager"/>
+        
+	</menu>
+</config>

@@ -1,0 +1,75 @@
+<?php 
+ /**
+  * @var $block \Litmus7\Merc\Block\Adminhtml\Statistics\Edit\Tab\PerformanceMetrics;
+  */  
+   $GenStat = $block->genStats();?>
+   
+   
+   <?php $keySpaceHits = $GenStat['keyspace_hits'];
+   
+         $keySpaceMisses = $GenStat['keyspace_misses'];
+         
+         $var = $keySpaceHits + $keySpaceMisses;
+         
+         $hitRate = $keySpaceHits/$var; ?>
+         
+         <div class="metrics_element">
+           <span><?php echo __("HitRate"); ?></span>
+           <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+           <div class="tooltip"><?php echo __("Hit rate is the ratio between keyspace hits & keyspace misses.Data Expiration or insufficient memory can cause low hit rate."); ?></div>
+           </span>
+            <span class="metricsvaluespan"><?php echo number_format((float)$hitRate,2); ?></span>
+         </div>
+         
+         <div class="metrics_element">
+            <span><?php echo __("Instantaneous OPS Per Sec"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Number of commands processing per sec. Check if the figure is dropping or stall completely."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['instantaneous_ops_per_sec']; ?></span>
+            
+         </div>
+         
+         <?php $net_input_byte = $GenStat['total_net_input_bytes'];
+               $net_input_mb   = round((($net_input_byte/1024)/1024),2);
+         ?>
+         
+         <div class="metrics_element">
+            <span><?php echo __("Total Net Input"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the total number of bytes that the Redis server has received since it started."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $net_input_mb." Mb"; ?></span>
+            
+         </div>
+         
+         <?php $net_output_byte = $GenStat['total_net_output_bytes'];
+               $net_output_mb   = round((($net_output_byte/1024)/1024),2);
+         ?>
+         
+         <div class="metrics_element">
+            <span><?php echo __("Total Net Output"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the total number of bytes that the Redis server has sent since it started."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $net_output_mb." Mb"; ?></span>
+            
+         </div>
+         
+         <div class="metrics_element">
+            <span><?php echo __("Instantaneous Input"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the instantaneous input traffic."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['instantaneous_input_kbps']." kbps"; ?></span>
+            
+         </div>
+         
+         <div class="metrics_element">
+            <span><?php echo __("Instantaneous Output"); ?></span>
+            <span class="metricselement_imgspan"><img src="<?php echo $block->getViewFileUrl('Litmus7_Merc::images/info.png'); ?>" alt="info" height="15" width="15" />
+            <div class="tooltip"><?php echo __("Measures the instantaneous output traffic."); ?></div>
+            </span>
+            <span class="metricsvaluespan"><?php echo $GenStat['instantaneous_output_kbps']." kbps"; ?></span>
+            
+         </div>
