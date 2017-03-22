@@ -110,7 +110,7 @@ class Save extends \Magento\Backend\App\Action
                try{
                 $this->_redis->connect();
             }catch (\Exception $e) {
-                    $this->messageManager->addException($e, __('Connection to Redis failed due to cache configuration error.'));
+                    $this->messageManager->addException($e, __('Connection to redis failed due to invalid configuration parameters in cache section.'));
                     $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
                     return $resultRedirect->setPath('merc/redismanager/edit/id/1');
                 }
@@ -120,7 +120,7 @@ class Save extends \Magento\Backend\App\Action
             try{
                 $this->_redis->connect();
             }catch (\Exception $e) {
-                    $this->messageManager->addException($e, __('Connection to Redis failed due to page cache configuration error'));
+                    $this->messageManager->addException($e, __('Connection to redis failed due to invalid configuration parameters in page cache section.'));
                     $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
                     return $resultRedirect->setPath('merc/redismanager/edit/id/1');
                 }
@@ -128,7 +128,7 @@ class Save extends \Magento\Backend\App\Action
                     $model  = $this->_objectManager->create('Litmus7\Merc\Model\Redismanager');
                     $model->setRedisConfig($data['server'],$data['server_pagecache'],$data['port'],$data['port_pagecache'],$data['persistent'],$data['persistent_pagecache'],$data['db'],$data['db_pagecache'],$data['force_standalone'],$data['force_standalone_pagecache'],$data['connect_retries'],$data['connect_retries_pagecache'],$data['read_timeout'],$data['read_timeout_pagecache'],$data['automatic_cleaning_factor'],$data['automatic_cleaning_factor_pagecache'],$data['compress_data'],$data['compress_data_pagecache'],$data['compress_tags'],$data['compress_tags_pagecache'],$data['compress_threshold'],$data['compress_threshold_pagecache'],$data['compression_lib'],$data['compression_lib_pagecache'],$data['password'],$data['password_pagecache']);
                 
-                $this->messageManager->addSuccess(__('Connection to Redis Successfull and the Configuration details are saved. '));
+                $this->messageManager->addSuccess(__('Successfully connected with redis and the configuration details are saved. '));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 
             } catch (\Magento\Framework\Model\Exception $e) {

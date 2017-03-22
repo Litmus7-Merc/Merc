@@ -52,7 +52,7 @@ class Index extends \Magento\Backend\App\Action
         
         $modelObj               = $this->deploymentConfig->getConfigData('cache');
         if(empty($modelObj)){
-            $this->messageManager->addError(__('Please Provide Redis Configuration. '));
+            $this->messageManager->addError(__('Please provide redis configuration details.'));
             $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
             return $resultRedirect->setPath('merc/redismanager/edit/id/1');
         }
@@ -71,7 +71,7 @@ class Index extends \Magento\Backend\App\Action
                try{
                 $this->_redis->connect();
             }catch (\Exception $e) {
-                    $this->messageManager->addException($e, __('Please Provide a valid redis configuration.'));
+                    $this->messageManager->addException($e, __('Please provide valid redis configuration parameters.'));
                     $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
                     return $resultRedirect->setPath('merc/redismanager/edit/id/1');
                 }
@@ -97,7 +97,7 @@ class Index extends \Magento\Backend\App\Action
         
         $this->resultPage = $this->resultPageFactory->create();
         $this->resultPage->setActiveMenu('Litmus7_Merc::redis');
-        $this->resultPage->getConfig()->getTitle()->prepend(__('Magento Extension For Redis Cache - Keys'));
+        $this->resultPage->getConfig()->getTitle()->prepend(__('MERC - Keys'));
         return $this->resultPage;       
     }
     

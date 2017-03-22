@@ -49,7 +49,7 @@ class Edit extends \Magento\Backend\App\Action
         
         $this->resultPage = $this->resultPageFactory->create();
         $this->resultPage->setActiveMenu('Litmus7_Merc::redis');
-        $this->resultPage->getConfig()->getTitle()->prepend(__('Magento Extension For Redis Cache - Configuration'));
+        $this->resultPage->getConfig()->getTitle()->prepend(__('MERC - Configuration'));
         return $this->resultPage;
     }
     public function _isAllowed()
