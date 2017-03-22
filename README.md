@@ -12,9 +12,9 @@ host or problem with the slave instance. The persistence metrics, shows paramete
 
 Version: 1.0.0
 
-#Requirements: Magento Community Edition version 2.0.2 or higher, Redis Server version 3.0 or higher
+Requirements: Magento Community Edition version 2.0.2 or higher, Redis Server version 3.0 or higher
 
-#Features: 
+Features: 
 	Automatic Redis configuration with Magento.
 	Merchant can view all the Redis keys.
 	Merchant can search for a specific Redis key.
@@ -22,4 +22,7 @@ Version: 1.0.0
 	Merchant can delete any number of keys as per the choice.
 	Merchant can monitor all the important Redis Metrics.
 	Merchant can delete the Redis keys of specific products.
-		
+	
+Installation: https://youtu.be/0ZyHuEZL3Qw
+
+Configuration: https://youtu.be/gv1aH_cJHWs
